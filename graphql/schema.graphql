@@ -28,6 +28,7 @@ scalar JSON
 type Mutation {
   createExpense(category: String!, date: Int!, description: String, expense: Float!, storeName: String!, userId: String!): Habit!
   createSubscription(endpoint: String!, expirationTime: Int, keys: JSON): Subscription!
+  createUser(email: String!, image: String, name: String!): User!
 }
 
 type PageInfo {

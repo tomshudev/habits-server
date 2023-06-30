@@ -11,6 +11,9 @@
     "generate:nexus": "ts-node --transpile-only src/schema",
     "gen_vapid_keys": "web-push generate-vapid-keys [--json]"
   },
+  "prisma": {
+    "seed": "yarn ts-node prisma/seed.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -37,7 +37,7 @@ export const CreateSubscriptionMutation = extendType({
       async resolve(_parent, args, ctx) {
         const newSubscription = { ...args };
 
-        console.log("creating new subscription");
+        console.log("creating new subscription", newSubscription);
 
         const sub = await ctx.prisma.subscription.create({
           data: newSubscription,
@@ -52,6 +52,7 @@ export const CreateSubscriptionMutation = extendType({
         };
 
         try {
+          console.log("sending notification");
           const res = await webPush.sendNotification(
             {
               endpoint: newSubscription.endpoint,
@@ -71,6 +72,8 @@ export const CreateSubscriptionMutation = extendType({
         } catch (e) {
           console.error("failed to send", e);
         }
+
+        console.log("was able to send notification");
 
         return sub;
       },
